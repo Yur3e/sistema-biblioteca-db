@@ -1,9 +1,9 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 from pymongo import MongoClient
 from bson import ObjectId
 
 app = Flask(__name__)
-app.secret_key = "biblioteca123"  # usado para mensagens flash
+app.secret_key = "biblioteca123"  # usado para mensagens flash e sessão
 
 # === Conexão com o MongoDB Atlas ===
 client = MongoClient("mongodb+srv://Aprendendo_mongo:Aprendendo_mongo@aprendendomongo.yywviso.mongodb.net/?retryWrites=true&w=majority&appName=Aprendendomongo")
@@ -12,14 +12,11 @@ usuarios = banco["usuarios"]
 livros = banco["livros"]
 autores = banco["autores"]
 
-# ====================== ROTAS DE LOGIN ======================
-
-@app.route('/')
-def home():
-    return redirect(url_for('login'))
+# ====================== ROTAS DE LOGIN / CADASTRO ======================
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    """Tela de login"""
     if request.method == 'POST':
         email = request.form.get('email')
         senha = request.form.get('senha')
@@ -27,15 +24,19 @@ def login():
         usuario = usuarios.find_one({"email": email, "senha": senha})
 
         if usuario:
+            session['usuario_id'] = str(usuario['_id'])
+            session['usuario_nome'] = usuario['nome']
             flash(f"Bem-vindo(a), {usuario['nome']}!", "success")
-            return redirect(url_for('painel'))
+            return redirect(url_for('home'))
         else:
             flash("Email ou senha incorretos!", "error")
 
     return render_template('login.html')
 
+
 @app.route('/cadastro', methods=['GET', 'POST'])
 def cadastro():
+    """Tela de cadastro de novo usuário"""
     if request.method == 'POST':
         nome = request.form.get('nome')
         email = request.form.get('email')
@@ -46,7 +47,6 @@ def cadastro():
             flash("Este e-mail já está cadastrado!", "error")
             return redirect(url_for('cadastro'))
 
-        # Insere o novo usuário
         usuarios.insert_one({
             "nome": nome,
             "email": email,
@@ -58,21 +58,28 @@ def cadastro():
 
     return render_template('cadastro.html')
 
-@app.route('/painel')
-def painel():
-    """Painel principal com os livros"""
-    return render_template('index.html')
+
+@app.route('/logout')
+def logout():
+    """Efetua logout e limpa sessão"""
+    session.clear()
+    flash("Você saiu da sua conta.", "success")
+    return redirect(url_for('login'))
 
 # ====================== ROTAS DE LIVROS ======================
 
-@app.route('/api/livros', methods=['GET'])
-def get_livros():
-    """Retorna todos os livros com autor e imagem"""
-    lista = []
+@app.route('/')
+def home():
+    """Renderiza a página inicial com os livros"""
+    if 'usuario_id' not in session:
+        flash("Faça login para acessar a biblioteca.", "error")
+        return redirect(url_for('login'))
+    
+    todos_livros = []
     for livro in livros.find():
         autor = autores.find_one({"_id": livro["autor_id"]})
-        lista.append({
-            "id": str(livro["_id"]),
+        todos_livros.append({
+            "_id": str(livro["_id"]),
             "titulo": livro["titulo"],
             "ano_publicacao": livro["ano_publicacao"],
             "genero": livro["genero"],
@@ -81,11 +88,17 @@ def get_livros():
             "imagem_url": livro.get("imagem_url", ""),
             "sinopse": livro.get("sinopse", "")
         })
-    return jsonify(lista)
+
+    return render_template('index.html', livros=todos_livros)
+
 
 @app.route('/livro/<id>')
 def detalhes_livro(id):
     """Renderiza a página de detalhes de um livro específico"""
+    if 'usuario_id' not in session:
+        flash("Faça login para ver os detalhes do livro.", "error")
+        return redirect(url_for('login'))
+
     livro = livros.find_one({"_id": ObjectId(id)})
     if not livro:
         return "Livro não encontrado", 404

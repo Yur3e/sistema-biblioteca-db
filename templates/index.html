@@ -7,15 +7,28 @@
 </head>
 <body>
     <header>
-        <h1>📚 Biblioteca Online</h1>
+        <div class="header-content">
+            <h1>📚 Biblioteca Online</h1>
+            <a href="{{ url_for('logout') }}" class="btn-logout">Sair</a>
+        </div>
     </header>
 
     <main>
         <div id="livros-container">
-            <p>Carregando livros...</p>
+            {% if livros %}
+                {% for livro in livros %}
+                <div class="livro">
+                    <img src="{{ livro.imagem_url }}" alt="Capa de {{ livro.titulo }}">
+                    <h3>{{ livro.titulo }}</h3>
+                    <p><strong>Autor:</strong> {{ livro.autor }}</p>
+                    <p><strong>Gênero:</strong> {{ livro.genero }}</p>
+                    <a href="{{ url_for('detalhes_livro', id=livro._id) }}" class="btn-detalhes">Solicitar Empréstimo</a>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>Nenhum livro cadastrado.</p>
+            {% endif %}
         </div>
     </main>
-
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </body>
 </html>
