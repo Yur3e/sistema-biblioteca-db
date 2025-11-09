@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Painel | Biblioteca Online</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>📚 Biblioteca Online</h1>
+        <p>Bem-vindo(a) ao seu painel de leitura</p>
+    </header>
+
+    <main>
+        <div id="livros-container">
+            <p>Carregando livros...</p>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

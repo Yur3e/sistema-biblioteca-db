@@ -1,13 +1,13 @@
 /* ======= ESTILO BASE ======= */
 body {
     font-family: 'Segoe UI', sans-serif;
-    background-color: #f4f4f9;
+    background-color: #FAF3E0;
     margin: 0;
     padding: 0;
 }
 
 header {
-    background-color: #008f4c;
+    background-color: #993B07;
     color: white;
     text-align: center;
     padding: 20px;
@@ -35,7 +35,7 @@ header {
 }
 
 .livro h3 {
-    color: #008f4c;
+    color: #D25F05;
     margin-bottom: 10px;
 }
 
@@ -56,7 +56,7 @@ header {
 .btn-detalhes {
     display: inline-block;
     margin-top: 10px;
-    background-color: #008f4c;
+    background-color: #D25F05;
     color: white;
     padding: 10px 15px;
     border-radius: 6px;
@@ -113,3 +113,216 @@ main.detalhes p {
     box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
+/* =================== BASE GERAL =================== */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+}
+
+/* =================== HEADER =================== */
+header {
+    background-color: #008f4c;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+/* =================== PAINEL DE LIVROS =================== */
+#livros-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.livro {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.livro:hover {
+    transform: scale(1.03);
+}
+
+.livro h3 {
+    color: #008f4c;
+    margin-bottom: 10px;
+}
+
+.livro p {
+    margin: 5px 0;
+}
+
+.livro img {
+    width: 160px;
+    height: 240px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+/* =================== LOGIN PAGE =================== */
+.login-body {
+    background: linear-gradient(135deg, #008f4c, #00b368);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    width: 350px;
+    text-align: center;
+}
+
+.login-container h1 {
+    color: #008f4c;
+    margin-bottom: 10px;
+}
+
+.login-container h2 {
+    color: #333;
+    font-weight: normal;
+    margin-bottom: 20px;
+}
+
+.login-container input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #008f4c;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.login-container button:hover {
+    background-color: #00a75a;
+}
+
+/* =================== MENSAGENS FLASH =================== */
+.mensagens {
+    margin-top: 10px;
+}
+
+.mensagens p {
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.mensagens p.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.mensagens p.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #F5F7FA;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.login-container {
+    background: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    width: 360px;
+    text-align: center;
+}
+
+h1 {
+    color: #1E3A8A;
+    margin-bottom: 25px;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    text-align: left;
+    color: #1F2937;
+    font-weight: 600;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #CBD5E1;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+button {
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #2563EB;
+}
+
+.link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.link a {
+    color: #3B82F6;
+    text-decoration: none;
+}
+
+.link a:hover {
+    text-decoration: underline;
+}
+
+.messages {
+    margin-top: 20px;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+}
