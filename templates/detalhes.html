@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ livro.titulo }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>{{ livro.titulo }}</h1>
+    </header>
+
+    <main style="padding: 20px; text-align: center;">
+        <img src="{{ livro.imagem_url }}" alt="{{ livro.titulo }}" class="livro-img" style="max-width: 300px;">
+        <h2>{{ autor.nome if autor else 'Autor desconhecido' }}</h2>
+        <p><strong>Gênero:</strong> {{ livro.genero }}</p>
+        <p><strong>Ano:</strong> {{ livro.ano_publicacao }}</p>
+        <p style="max-width: 600px; margin: 20px auto;">{{ livro.sinopse }}</p>
+        <a href="#" class="btn-detalhes">📗 Emprestar Livro</a>
+    </main>
+</body>
+</html>
