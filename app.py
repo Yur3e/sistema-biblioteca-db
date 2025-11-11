@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from pymongo import MongoClient
 from bson import ObjectId
+from datetime import datetime
 
 app = Flask(__name__)
 app.secret_key = "biblioteca123"  # usado para mensagens flash e sessão
@@ -105,6 +106,44 @@ def detalhes_livro(id):
 
     autor = autores.find_one({"_id": livro["autor_id"]})
     return render_template('detalhes.html', livro=livro, autor=autor)
+
+@app.route('/emprestar/<livro_id>', methods=['POST'])
+def emprestar(livro_id):
+    if 'usuario_id' not in session:
+        flash("Faça login para realizar empréstimos.", "error")
+        return redirect(url_for('login'))
+
+    livro = livros.find_one({"_id": ObjectId(livro_id)})
+
+    if not livro:
+        flash("Livro não encontrado.", "error")
+        return redirect(url_for('home'))
+
+    if not livro["disponivel"]:
+        flash("Este livro já está emprestado.", "error")
+        return redirect(url_for('detalhes_livro', id=livro_id))
+
+    # Registrar o empréstimo usando a data atual
+    data_emprestimo = datetime.now()
+
+    emprestimos = banco["emprestimos"]
+    emprestimos.insert_one({
+        "usuario_id": session['usuario_id'],
+        "nome_usuario": session['usuario_nome'],
+        "livro_id": ObjectId(livro_id),
+        "titulo_livro": livro["titulo"],
+        "data_emprestimo": data_emprestimo,
+        "status": "Em andamento"
+    })
+
+    # Atualiza livro para indisponível
+    livros.update_one(
+        {"_id": ObjectId(livro_id)},
+        {"$set": {"disponivel": False}}
+    )
+
+    flash("Empréstimo realizado com sucesso!", "success")
+    return redirect(url_for('detalhes_livro', id=livro_id))
 
 # ====================== EXECUÇÃO ======================
 

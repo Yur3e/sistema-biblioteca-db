@@ -26,8 +26,16 @@
             <p class="status-indisponivel">Indisponível no momento</p>
         {% endif %}
 
+        {% if livro.disponivel %}
+        <form action="{{ url_for('emprestar', livro_id=livro._id) }}" method="POST">
+            <button type="submit" class="btn-detalhes">📚 Realizar Empréstimo</button>
+        </form>
+        {% else %}
+        <p class="status-indisponivel"></p>
+        {% endif %}
         <p><strong>Sinopse:</strong> {{ livro.sinopse }}</p>
         <a href="{{ url_for('home') }}" class="btn-detalhes">⬅ Voltar</a>
+
     </main>
 </body>
 </html>
