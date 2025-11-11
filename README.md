@@ -112,7 +112,6 @@ Você será redirecionado para a *página de login*, e poderá navegar entre o p
 
 │   ├── css/
 
-│   └── img/
 
 └── README.md
 
