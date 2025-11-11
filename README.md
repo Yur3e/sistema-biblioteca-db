@@ -117,7 +117,7 @@ Você será redirecionado para a *página de login*, e poderá navegar entre o p
 🎓 *Curso:* Ciência de Dados  
 👩‍💻 *Desenvolvido por:* Ayryslaine Kelle, Brenno Vale, Caio Henrique, José Yure e Jeová Anderson
 📅 *Ano:* 2025  
-🏫 *Instituição:* [Nome da Faculdade ou Universidade]
+🏫 *Instituição:* Universidade Estadual da Paraíba
 
 ---
 
