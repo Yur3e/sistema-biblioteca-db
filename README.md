@@ -43,3 +43,15 @@ db = client["biblioteca"]
 autores = db["autores"]
 livros = db["livros"]
 emprestimos = db["emprestimos"]
+
+---
+
+### 👥 Equipe
+
+* Ayryslaine Kelle
+* Brenno Vale
+* Jeová Anderson
+* Caio Henrique
+* José Yure
+
+---
