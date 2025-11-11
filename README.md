@@ -17,10 +17,9 @@ O sistema foi criado como parte do projeto da disciplina *Banco de Dados NoSQL*.
 
 ## 🎯 Funcionalidades
 
-- Registro de *empréstimos* e *devoluções*
+- Registro de *empréstimos* sem devolução com função visual
 - Login de usuários (interface funcional)
 - Cadastro de usuários (interface funcional)
-- Apenas registro de empréstimo sem devolução com função visual
 - Visualização do acervo disponível
 
 ---
