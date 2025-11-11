@@ -17,8 +17,6 @@ O sistema foi criado como parte do projeto da disciplina *Banco de Dados NoSQL*.
 
 ## 🎯 Funcionalidades
 
-- Cadastro e gerenciamento de *autores*
-- Cadastro e gerenciamento de *livros*
 - Registro de *empréstimos* e *devoluções*
 - Login de usuários (interface funcional)
 - Cadastro de usuários (interface funcional)
