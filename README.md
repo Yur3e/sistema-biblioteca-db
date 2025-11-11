@@ -53,6 +53,6 @@ emprestimos = db["emprestimos"]
 * Brenno Vale
 * Jeová Anderson
 * Caio Henrique
-* José Yure
+* José Yure
 
 ---
