@@ -47,12 +47,78 @@ emprestimos = db["emprestimos"]
 
 ---
 
-### 👥 Equipe
+## 🔗 Modelo de Dados: Referencing (Referência)
 
-* Ayryslaine Kelle
-* Brenno Vale
-* Jeová Anderson
-* Caio Henrique
-* José Yure
+O modelo adotado neste projeto é o *Referencing, ou seja, os relacionamentos entre coleções são representados por **referências (IDs)*, e não pelo armazenamento de dados dentro de outros documentos.
+
+### 🧠 O que é o modelo Referencing?
+
+O *Referencing* é utilizado quando existe uma *relação 1:N* (um autor pode ter vários livros).  
+Nesse modelo, o documento “filho” (livro) guarda apenas o *ID do documento pai* (autor), em vez de duplicar todos os dados do autor.
 
 ---
+
+## 💻 Como Executar o Projeto
+
+Siga os passos abaixo para executar o sistema localmente:
+
+### ⿡ Clone o repositório
+bash
+git clone https://github.com/seuusuario/sistema-biblioteca.git
+
+
+### ⿢ Instale as dependências
+bash
+pip install flask pymongo
+
+
+### ⿣ Configure o MongoDB Atlas
+Edite o arquivo app.py e substitua a string de conexão:
+python
+client = MongoClient("sua_string_de_conexao_mongodb")
+
+
+### ⿤ Execute o servidor Flask
+bash
+python app.py
+
+
+### ⿥ Acesse no navegador
+
+http://localhost:5000
+
+
+Você será redirecionado para a *página de login*, e poderá navegar entre o painel e as rotas do sistema.
+
+---
+
+## 🧰 Estrutura do Projeto
+
+
+📁 sistema-biblioteca
+├── app.py
+├── templates/
+│   ├── login.html
+│   ├── cadastro.html
+│   ├── emprestimo.html
+│   └── index.html
+├── static/
+│   ├── css/
+│   └── img/
+└── README.md
+
+
+---
+
+## 👩‍🏫 Projeto Acadêmico
+
+📘 *Trabalho da disciplina:* Banco de Dados NoSQL  
+👩‍🏫 *Professora:* Jessily Medeiros Quaresma 
+🎓 *Curso:* Ciência de Dados  
+👩‍💻 *Desenvolvido por:* Ayryslaine Kelle, Brenno Vale, Caio Henrique, José Yure e Jeová Anderson
+📅 *Ano:* 2025  
+🏫 *Instituição:* [Nome da Faculdade ou Universidade]
+
+---
+
+> 💬 Este projeto foi desenvolvido com fins educacionais para demonstrar o uso do modelo de dados Referencing no MongoDB em um sistema web completo de gerenciamento de biblioteca.

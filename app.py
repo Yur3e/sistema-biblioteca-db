@@ -7,7 +7,7 @@ app = Flask(__name__)
 app.secret_key = "biblioteca123"  # usado para mensagens flash e sessão
 
 # === Conexão com o MongoDB Atlas ===
-client = MongoClient("mongodb+srv://Aprendendo_mongo:Aprendendo_mongo@aprendendomongo.yywviso.mongodb.net/?retryWrites=true&w=majority&appName=Aprendendomongo")
+client = MongoClient("sua_string_de_conexao_mongodb")
 banco = client["biblioteca"]
 usuarios = banco["usuarios"]
 livros = banco["livros"]
