@@ -97,14 +97,23 @@ Você será redirecionado para a *página de login*, e poderá navegar entre o p
 
 📁 sistema-biblioteca
 ├── app.py
+
 ├── templates/
+
 │   ├── login.html
+
 │   ├── cadastro.html
+
 │   ├── emprestimo.html
+
 │   └── index.html
+
 ├── static/
+
 │   ├── css/
+
 │   └── img/
+
 └── README.md
 
 
