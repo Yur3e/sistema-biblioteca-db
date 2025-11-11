@@ -62,28 +62,28 @@ Nesse modelo, o documento “filho” (livro) guarda apenas o *ID do documento p
 
 Siga os passos abaixo para executar o sistema localmente:
 
-### ⿡ Clone o repositório
+### 📍 Clone o repositório
 bash
 git clone https://github.com/seuusuario/sistema-biblioteca.git
 
 
-### ⿢ Instale as dependências
+### 📍 Instale as dependências
 bash
 pip install flask pymongo
 
 
-### ⿣ Configure o MongoDB Atlas
+### 📍 Configure o MongoDB Atlas
 Edite o arquivo app.py e substitua a string de conexão:
 python
 client = MongoClient("sua_string_de_conexao_mongodb")
 
 
-### ⿤ Execute o servidor Flask
+### 📍 Execute o servidor Flask
 bash
 python app.py
 
 
-### ⿥ Acesse no navegador
+### 📍 Acesse no navegador
 
 http://localhost:5000
 
