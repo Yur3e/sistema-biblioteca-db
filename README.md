@@ -1,6 +1,6 @@
 # 📚 Sistema de Biblioteca Online
 
-Este projeto é um *Sistema de Biblioteca Online* desenvolvido com *Python* e *MongoDB Atlas, que permite o gerenciamento de **livros, autores e empréstimos*.  
+Este projeto é um *Sistema de Biblioteca Online* desenvolvido com *Python* e MongoDB Atlas, que permite o gerenciamento de livros, autores e empréstimos*.  
 O sistema foi criado como parte do projeto da disciplina *Banco de Dados NoSQL*.
 
 ---
